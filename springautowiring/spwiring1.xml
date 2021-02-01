@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<bean id="c" class="com.java.spring.springautowiring.Car"
+		autowire="byType">
+
+		<property name="carId" value="401"></property>
+		<property name="carName" value="Nexon"></property>
+		<lookup-method name="getEngine" bean="e2" />
+
+
+	</bean>
+	<bean id="e1" class="com.java.spring.springautowiring.Engine"
+		scope="prototype" autowire="byType">
+
+		<property name="id" value="101"></property>
+		<property name="engName" value="HP"></property>
+		<property name="engPower" value="108.0"></property>
+
+	</bean>
+
+	<bean id="e2" class="com.java.spring.springautowiring.Engine"
+		scope="prototype" autowire="byType" primary="true">
+
+		<property name="id" value="102"></property>
+		<property name="engName" value="HP"></property>
+		<property name="engPower" value="109.0"></property>
+
+	</bean>
+
+	<bean id="et" class="com.java.spring.springautowiring.EngineType">
+		<property name="typeId" value="1001"></property>
+		<property name="engPetDes" value="Petrol"></property>
+	</bean>
+
+	<bean id="ett"
+		class="com.java.spring.springautowiring.EngineTransmissionType"
+		scope="prototype">
+		<property name="trTypwId" value="2001"></property>
+		<property name="trantype" value="Automatic"></property>
+	</bean>
+
+	<bean id="t" class="com.java.spring.springautowiring.Tyre">
+		<property name="tyreId" value="201"></property>
+		<property name="tyreCompName" value="MRF"></property>
+		<property name="tyreSize" value="30.0"></property>
+	</bean>
+	<bean id="a" class="com.java.spring.springautowiring.AC">
+
+		<constructor-arg name="acId" value="301"></constructor-arg>
+		<constructor-arg name="acCompName" value="LG"></constructor-arg>
+		<constructor-arg name="acMode" value="Auto"></constructor-arg>
+
+	</bean>
+</beans>
